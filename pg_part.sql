@@ -304,11 +304,6 @@ BEGIN
   RAISE NOTICE ''add_partition: %'', _def;
   EXECUTE _def;
 
-  _def = ''DELETE FROM '' || _nspname || ''.'' || _relname || '' WHERE '' || _cond;
-  _def = _def || '';'';
-  RAISE NOTICE ''add_partition: %'', _def;
-  EXECUTE _def;
-
   SELECT pgpart._get_import_query(_nspname, _partname, _temp_file)
     INTO _def;
   _def = _def || '';'';
